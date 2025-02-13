@@ -1,0 +1,166 @@
+:root{
+    --primary: #fff;
+    --bg-color: rgb(5, 53, 61);
+    --bg-envelope-color: #ff8fa3;
+    --envelope-tab: #ff4d6d;
+    --envelope-cover: #ffc2d1;
+    --shadow-color: rgba(0, 0, 0, 0.795);
+    --txt-color: #444;
+    --heart-color: #ff0054;
+  }
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-image: url('assets/coffe.jpeg');
+    /* background-size: 1000px; */
+    background: cover;
+    background-position: center center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.page-header {
+    width: 100%; /* Full width */
+    background-color: #5a2d0c; /* Same background color as footer */
+    color: #fff; /* White text color for contrast */
+    text-align: center; /* Center-align the text */
+    padding: 10px 0; /* Add vertical padding */
+    position: fixed; /* Fix header at the top of the viewport */
+    top: 0; /* Align header to the top */
+    left: 0; /* Align header to the left edge */
+    z-index: 10; /* Ensure it stays above other elements */
+}
+
+.page-footer {
+    width: 100%; /* Full width */
+    background-color: #5a2d0c; /* Footer background color */
+    color: #fff; /* Text color */
+    text-align: center;
+    padding: 10px 0; /* Vertical padding */
+    position: fixed; /* Fix footer at the bottom */
+    bottom: 0; /* Align to bottom of viewport */
+    left: 0; /* Align to left edge */
+    z-index: 10; /* Ensure it stays above other elements */
+}
+
+
+
+
+
+.page-footer p {
+    margin: 5px 0; /* Add spacing between footer lines */
+}
+
+.container {
+  /* height: 100vh; */
+  height: calc(100vh - 60px);
+  display: grid;
+  place-items: center;
+  padding-top: 50px; 
+  padding-bottom: 50px;
+}
+.envelope-wrapper {
+    margin-top: 240px;
+    margin-bottom: auto; /* Prevent it from being pushed down by footer */
+}
+.container > .envelope-wrapper {
+  background: var(--bg-envelope-color);
+  box-shadow: 0 0 40px var(--shadow-color);
+}
+.container .envelope-wrapper .envelope{
+    position: relative;
+    /* width: 300px;
+    height: 230px; */
+    width: 420px;  
+    height: 322px; 
+}
+.envelope-wrapper > .envelope::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    z-index: 2;
+    border-top: 182px solid var(--envelope-tab);
+    border-right: 210px solid transparent;
+    border-left: 210px solid transparent;
+    transform-origin: top;
+    transition: all 0.5s ease-in-out 0.7s;
+}
+
+.container .envelope-wrapper .envelope::after{
+    content: "";
+    position: absolute;
+    z-index: 2;
+    width: 0;
+    height: 0;
+    /* border-top: 130px solid transparent;
+    border-right: 150px solid var(--envelope-cover);
+    border-bottom: 100px solid var(--envelope-cover);
+    border-left: 150px solid var(--envelope-cover); */
+    border-top: 182px solid transparent;
+    border-right: 210px solid var(--envelope-cover);
+    border-bottom: 140px solid var(--envelope-cover);
+    border-left: 210px solid var(--envelope-cover);
+}
+.envelope > .letter{
+    position: absolute;
+    right: 10%;
+    bottom: 0;
+    width: 70%;
+    height: 90%;
+    background: var(--primary);
+    text-align: center;
+    transition: all  1s ease-in-out;
+    box-shadow: 0 0 5px var(--shadow-color);
+    padding: 25px 15px;
+}
+.container .envelope-wrapper .envelope .letter .text{
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--txt-color);
+    text-align: left;
+    font-size: 10px;
+}
+
+.heart {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    width: 80px; /* Adjust size as needed */
+    height: 80px;
+    transform: translate(-50%, -20%);
+    cursor: pointer;
+    transition: all 0.5s ease-in-out 1s;
+    z-index: 4;
+        /* Remove color property as it doesn't affect img tags */
+}
+.heart::before,
+.heart::after{
+    content: "";
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: var(--heart-color);
+    border-radius: 50%; 
+}
+.heart::before{
+    top: -7.5px;
+}
+.heart::after{
+    right: -7.5px;
+}
+
+.flap .envelope::before{
+    transform: rotateX(180deg);
+    z-index: 0;
+}
+.flap .envelope .letter {
+    bottom: 120px;
+    transform: scale(1.2);
+    transition-delay: 1s;
+}
+.flap .heart{
+    transform: translate(-50%, -20%) rotate(360deg);
+    /* transform: rotate(45deg); */
+    transition-delay: 0.4s;
+}
+
